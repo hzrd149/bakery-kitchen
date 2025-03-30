@@ -1,6 +1,7 @@
 import { map, filter, repeat, switchMap, shareReplay } from "rxjs/operators";
+import { Relay } from "applesauce-relay";
+
 import { bakeryUrl } from "./settings";
-import { Relay } from "../classes/relay";
 
 const bakery$ = bakeryUrl.pipe(
   map((url) => (url ? new Relay(url) : null)),
@@ -11,7 +12,7 @@ const bakery$ = bakeryUrl.pipe(
 bakery$
   .pipe(
     filter((bakery) => bakery !== null),
-    switchMap((bakery) => bakery.req([{ kinds: [2] }], "ping")),
+    switchMap((bakery) => bakery.message$),
     repeat(),
   )
   .subscribe();
