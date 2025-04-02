@@ -2,9 +2,21 @@ import { z } from "zod";
 
 type InputOutput<In, Out> = [In, Out];
 
+export type ConnectionStatus =
+  | "initialized"
+  | "connecting"
+  | "connected"
+  | "waiting-for-retrying"
+  | "retrying"
+  | "dormant"
+  | "error"
+  | "rejected"
+  | "terminated";
+
 export type BakeryQueries = {
   config: InputOutput<void, BakeryConfigType>;
   services: InputOutput<void, string[]>;
+  connections: InputOutput<void, Record<string, ConnectionStatus>>;
 };
 export type BakeryActions = {
   "config-merge": InputOutput<Partial<BakeryConfigType>, void>;

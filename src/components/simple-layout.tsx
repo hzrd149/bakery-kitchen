@@ -6,10 +6,10 @@ export default function SimpleLayout(
   props: ParentProps<{ title: string; actions?: JSX.Element }>,
 ) {
   return (
-    <div class="drawer lg:drawer-open">
+    <div class="drawer flex-1 overflow-hidden lg:drawer-open">
       <input id="drawer" type="checkbox" class="drawer-toggle" />
 
-      <div class="drawer-content flex flex-col">
+      <div class="drawer-content flex-1 overflow-hidden flex flex-col">
         {/* Top navbar */}
         <div class="navbar bg-base-100 lg:hidden">
           <label for="drawer" class="btn btn-square btn-ghost drawer-button">
@@ -21,7 +21,7 @@ export default function SimpleLayout(
         </div>
 
         {/* Main content */}
-        <main class="flex-1 p-4">
+        <main class="flex-1 p-4 overflow-y-auto">
           <h1 class="text-2xl font-bold hidden lg:block mb-6">{props.title}</h1>
           {props.children}
         </main>

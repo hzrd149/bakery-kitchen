@@ -1,10 +1,9 @@
-import { of, switchMap } from "rxjs";
 import { from, createSignal, createEffect, createMemo } from "solid-js";
 import { useNavigate } from "@solidjs/router";
 
 import { ChevronLeftIcon, QrCodeIcon } from "../../components/icons";
 import { bakeryUrl } from "../../services/settings";
-import bakery$ from "../../services/connection";
+import { bakeryConnected } from "../../services/connection";
 
 function ConnectView() {
   const navigate = useNavigate();
@@ -12,11 +11,7 @@ function ConnectView() {
   const [submitted, setSubmitted] = createSignal(false);
   const [inputValue, setInputValue] = createSignal("");
 
-  const connected = from(
-    bakery$.pipe(
-      switchMap((bakery) => (bakery ? bakery.connected$ : of(false))),
-    ),
-  );
+  const connected = from(bakeryConnected);
   const url = from(bakeryUrl);
 
   // redirect once connected

@@ -1,17 +1,26 @@
-import { combineLatest, switchMap } from "rxjs";
+import { combineLatest } from "rxjs";
+import { kinds } from "nostr-tools";
+
 import { accounts } from "./accounts";
 import bakery$ from "./connection";
-import { kinds } from "nostr-tools";
 import defined from "../operators/defined";
+import { replaceableLoader } from "./loaders";
 
-// Subscribe to the users profile when connected
-combineLatest([accounts.active$.pipe(defined()), bakery$.pipe(defined())]).pipe(
-  switchMap(([account, bakery]) =>
-    bakery.req([
-      {
-        kinds: [kinds.Metadata, kinds.Contacts, kinds.RelayList],
-        authors: [account.pubkey],
-      },
-    ]),
-  ),
-);
+// Fetch to the users profile when connected
+combineLatest([
+  accounts.active$.pipe(defined()),
+  bakery$.pipe(defined()),
+]).subscribe(([account, bakery]) => {
+  replaceableLoader.next({
+    kind: kinds.Metadata,
+    pubkey: account.pubkey,
+  });
+  replaceableLoader.next({
+    kind: kinds.Metadata,
+    pubkey: account.pubkey,
+  });
+  replaceableLoader.next({
+    kind: kinds.Contacts,
+    pubkey: account.pubkey,
+  });
+});

@@ -3,6 +3,7 @@ import "./index.css";
 import { Route, Router } from "@solidjs/router";
 import { Toaster } from "solid-toast";
 import "solid-devtools";
+import "./services/lifecycle";
 
 import RequireConnection from "./components/require-connection";
 
