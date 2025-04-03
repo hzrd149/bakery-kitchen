@@ -2,6 +2,17 @@ import { z } from "zod";
 
 type InputOutput<In, Out> = [In, Out];
 
+export type BakeryQueries = {
+  config: InputOutput<void, BakeryConfigType>;
+  services: InputOutput<void, string[]>;
+  connections: InputOutput<void, Record<string, ConnectionStatus>>;
+  "network-status": InputOutput<void, NetworkStatusResult>;
+};
+export type BakeryActions = {
+  "config-merge": InputOutput<Partial<BakeryConfigType>, void>;
+};
+
+// connections
 export type ConnectionStatus =
   | "initialized"
   | "connecting"
@@ -13,13 +24,26 @@ export type ConnectionStatus =
   | "rejected"
   | "terminated";
 
-export type BakeryQueries = {
-  config: InputOutput<void, BakeryConfigType>;
-  services: InputOutput<void, string[]>;
-  connections: InputOutput<void, Record<string, ConnectionStatus>>;
+// network-status
+export type NetworkOutboundState = {
+  available: boolean;
+  running?: boolean;
+  error?: string;
 };
-export type BakeryActions = {
-  "config-merge": InputOutput<Partial<BakeryConfigType>, void>;
+export type NetworkInboundState = {
+  available: boolean;
+  running?: boolean;
+  error?: string;
+  address?: string;
+};
+export type NetworkState = {
+  inbound: NetworkInboundState;
+  outbound: NetworkInboundState;
+};
+export type NetworkStatusResult = {
+  tor: NetworkState;
+  hyper: NetworkState;
+  i2p: NetworkState;
 };
 
 export const bakeryConfigSchema = z.object({

@@ -1,8 +1,31 @@
-import { HomeIcon, ConnectionsIcon } from "../components/icons";
+import { JSX } from "solid-js";
+import { HomeIcon, ConnectionsIcon, SettingsIcon } from "../components/icons";
 import { A } from "@solidjs/router";
 
 interface NavigationDrawerProps {
   isOpen?: boolean;
+}
+
+function NavItem(props: {
+  href: string;
+  icon: JSX.Element;
+  label: string;
+  end?: boolean;
+}) {
+  return (
+    <li class="w-full">
+      <A
+        href={props.href}
+        class="w-full"
+        activeClass="active !bg-primary text-primary-content"
+        inactiveClass="hover:bg-base-300"
+        end={props.end}
+      >
+        {props.icon}
+        {props.label}
+      </A>
+    </li>
+  );
 }
 
 export function NavigationDrawer(_props: NavigationDrawerProps) {
@@ -16,29 +39,16 @@ export function NavigationDrawer(_props: NavigationDrawerProps) {
         </div>
 
         <ul class="menu w-full p-4 flex-1 gap-2">
-          <li class="w-full">
-            <A
-              href="/"
-              class="w-full"
-              activeClass="active !bg-primary text-primary-content"
-              inactiveClass="hover:bg-base-300"
-              end
-            >
-              <HomeIcon />
-              Home
-            </A>
-          </li>
-          <li class="w-full">
-            <A
-              href="/connections"
-              class="w-full"
-              activeClass="active !bg-primary text-primary-content"
-              inactiveClass="hover:bg-base-300"
-            >
-              <ConnectionsIcon />
-              Connections
-            </A>
-          </li>
+          <NavItem href="/" icon={<HomeIcon />} label="Home" end />
+          <NavItem
+            href="/connections"
+            icon={<ConnectionsIcon />}
+            label="Connections"
+          />
+        </ul>
+
+        <ul class="menu w-full p-4 gap-2">
+          <NavItem href="/config" icon={<SettingsIcon />} label="Config" />
         </ul>
 
         {/* User section at bottom */}

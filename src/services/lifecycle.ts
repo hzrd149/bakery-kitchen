@@ -10,7 +10,7 @@ import { replaceableLoader } from "./loaders";
 combineLatest([
   accounts.active$.pipe(defined()),
   bakery$.pipe(defined()),
-]).subscribe(([account, bakery]) => {
+]).subscribe(([account, _bakery]) => {
   replaceableLoader.next({
     kind: kinds.Metadata,
     pubkey: account.pubkey,

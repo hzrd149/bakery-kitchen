@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@solidjs/router": "^0.15.3",
+    "@types/qrcode-svg": "^1.1.5",
     "applesauce-accounts": "next",
     "applesauce-core": "next",
     "applesauce-factory": "next",
@@ -20,6 +21,7 @@
     "nanoid": "^5.1.5",
     "nostr-tools": "^2.12.0",
     "qr-scanner": "^1.4.2",
+    "qrcode-svg": "^1.1.0",
     "rxjs": "^7.8.2",
     "solid-devtools": "^0.33.0",
     "solid-js": "^1.9.5",

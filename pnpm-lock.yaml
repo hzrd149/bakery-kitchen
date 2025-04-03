@@ -11,6 +11,9 @@ importers:
       '@solidjs/router':
         specifier: ^0.15.3
         version: 0.15.3(solid-js@1.9.5)
+      '@types/qrcode-svg':
+        specifier: ^1.1.5
+        version: 1.1.5
       applesauce-accounts:
         specifier: next
         version: 0.0.0-next-20250402155906(typescript@5.7.3)
@@ -41,6 +44,9 @@ importers:
       qr-scanner:
         specifier: ^1.4.2
         version: 1.4.2
+      qrcode-svg:
+        specifier: ^1.1.0
+        version: 1.1.0
       rxjs:
         specifier: ^7.8.2
         version: 7.8.2
@@ -690,6 +696,9 @@ packages:
   '@types/offscreencanvas@2019.7.3':
     resolution: {integrity: sha512-ieXiYmgSRXUDeOntE1InxjWyvEelZGP63M+cGuquuRLuIKKT1osnkXjxev9B7d1nXSug5vpunx+gNlbVxMlC9A==}
 
+  '@types/qrcode-svg@1.1.5':
+    resolution: {integrity: sha512-GjkD+HB8S1wrIsf3skHDtcYBjzNhTxocMbX+wG166xDkaVOnLiMUla7bLjbwxo6mMvqqWQNP0Dk8nkIeizSmnw==}
+
   '@types/unist@3.0.3':
     resolution: {integrity: sha512-ko/gIFJRv177XgZsZcBwnqJN5x/Gien8qNOn0D5bQU/zAzVf9Zt3BlcUiLqhV9y4ARk0GbT3tnUiPNgnTXzc/Q==}
 
@@ -1055,6 +1064,10 @@ packages:
 
   qr-scanner@1.4.2:
     resolution: {integrity: sha512-kV1yQUe2FENvn59tMZW6mOVfpq9mGxGf8l6+EGaXUOd4RBOLg7tRC83OrirM5AtDvZRpdjdlXURsHreAOSPOUw==}
+
+  qrcode-svg@1.1.0:
+    resolution: {integrity: sha512-XyQCIXux1zEIA3NPb0AeR8UMYvXZzWEhgdBgBjH9gO7M48H9uoHzviNz8pXw3UzrAcxRRRn9gxHewAVK7bn9qw==}
+    hasBin: true
 
   remark-parse@11.0.0:
     resolution: {integrity: sha512-FCxlKLNGknS5ba/1lmpYijMUzX2esxW5xQqjWxw2eHFfS2MSdaHVINFmhjo+qN1WhZhNimq0dZATN9pH0IDrpA==}
@@ -1780,6 +1793,8 @@ snapshots:
 
   '@types/offscreencanvas@2019.7.3': {}
 
+  '@types/qrcode-svg@1.1.5': {}
+
   '@types/unist@3.0.3': {}
 
   applesauce-accounts@0.0.0-next-20250402155906(typescript@5.7.3):
@@ -2275,6 +2290,8 @@ snapshots:
   qr-scanner@1.4.2:
     dependencies:
       '@types/offscreencanvas': 2019.7.3
+
+  qrcode-svg@1.1.0: {}
 
   remark-parse@11.0.0:
     dependencies:

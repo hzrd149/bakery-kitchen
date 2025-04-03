@@ -28,5 +28,5 @@ export default function RequireConnection(props: ParentProps) {
     );
   }
 
-  return props.children;
+  return <>{props.children}</>;
 }
